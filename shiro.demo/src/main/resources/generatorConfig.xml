@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<properties resource="shiro-jdbc.properties" />
+	
+	<context id="mysqlTables" targetRuntime="MyBatis3">
+	
+		<!-- 注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+			<!-- <property name="suppressDate" value="true" /> 是否生成注释代时间戳 -->
+		</commentGenerator>  
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="${druid.url}" userId="${druid.username}" password="${druid.password}" />
+
+		<!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+
+		<javaTypeResolver>
+			 <property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--自动生成的实体的存放包路径 -->
+
+		<javaModelGenerator targetPackage="org.levi.shiro.demo.bean" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--自动生成的*Mapper.xml文件存放路径 -->
+
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		
+
+		<!--自动生成的*Mapper.java存放路径 -->
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="org.levi.shiro.demo.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		
+
+		<table tableName="roles_permissions" domainObjectName="PermissionBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			
+			<property name="useActualColumnNames" value="false" />
+			
+		</table>
+
+		<table tableName="user_roles" domainObjectName="RoleBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			
+			<property name="useActualColumnNames" value="false" />
+			
+		</table>
+		
+		<table tableName="users" domainObjectName="UserBean"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			
+			<property name="useActualColumnNames" value="false" />
+			
+		</table>
+	</context>
+</generatorConfiguration>
